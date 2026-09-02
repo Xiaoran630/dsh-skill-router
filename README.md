@@ -8,6 +8,7 @@ DSH 插件：**skills 管理 + 自动路由** —— 管理 `~/.dsh/skills` 下�
 - **管理界面**：在 DSH 设置页新增「Skills 管理」页面，可：
   - 列出 `~/.dsh/skills` 下的所有 skill
   - 查看某个 skill 的完整内容
+  - 编辑某个 skill（原始 `SKILL.md` 内容编辑，保留 frontmatter 与正文）
   - 新建 skill（名称 + 描述 + 正文，自动生成 `SKILL.md`）
   - 删除 skill
 - **存储位置**：skill 以 `<name>/SKILL.md` 的形式存放在 `~/.dsh/skills`（YAML frontmatter：`name` / `description` / `whenToUse` + 正文）。
