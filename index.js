@@ -314,6 +314,28 @@ function apply(ctx) {
               return;
             }
 
+            if (sub === "save") {
+              if (req.method !== "POST") {
+                writeJson(res, 405, { ok: false, error: "method not allowed" });
+                return;
+              }
+              const body = await readJsonBody(req);
+              const skillName = typeof body.name === "string" ? body.name.trim() : "";
+              const content = typeof body.content === "string" ? body.content : "";
+              if (!validName(skillName)) {
+                writeJson(res, 400, { ok: false, error: "非法 skill 目录名" });
+                return;
+              }
+              if (!content.trim()) {
+                writeJson(res, 400, { ok: false, error: "content 不能为空" });
+                return;
+              }
+              await mkdir(skillDirPath(skillName), { recursive: true });
+              await writeFile(skillFile(skillName), content, "utf8");
+              writeJson(res, 200, { ok: true, message: "已保存 skill：" + skillName });
+              return;
+            }
+
             if (sub === "remove") {
               if (req.method !== "POST") {
                 writeJson(res, 405, { ok: false, error: "method not allowed" });
