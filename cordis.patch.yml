@@ -1,0 +1,4 @@
+# dsh-skill-router bundle patch：把「skills 管理 + 自动路由」挂载进 profile 组合。
+- insert:
+    - id: skill-router
+      name: 'dsh-skill-router'

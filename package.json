@@ -1,0 +1,24 @@
+{
+  "name": "dsh-skill-router",
+  "version": "0.1.0",
+  "description": "DSH 插件：skills 管理 + 对话时自动匹配并加载最合适的 skill（存储于 ~/.dsh/skills）",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "license": "MIT"
+}
